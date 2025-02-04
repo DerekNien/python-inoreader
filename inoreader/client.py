@@ -225,8 +225,8 @@ class InoreaderClient(object):
         self.check_token()
 
         url = urljoin(BASE_URL, self.EDIT_TAG_PATH)
-        for start in range(0, len(articles), 10):
-            end = min(start + 10, len(articles))
+        for start in range(0, len(articles), 50):
+            end = min(start + 50, len(articles))
             params = {"a": label, "i": [articles[idx].id for idx in range(start, end)]}
             self.parse_response(
                 self.session.post(url, params=params, proxies=self.proxies), json_data=False
@@ -236,8 +236,8 @@ class InoreaderClient(object):
         self.check_token()
 
         url = urljoin(BASE_URL, self.EDIT_TAG_PATH)
-        for start in range(0, len(articles), 10):
-            end = min(start + 10, len(articles))
+        for start in range(0, len(articles), 50):
+            end = min(start + 50, len(articles))
             params = {"r": label, "i": [articles[idx].id for idx in range(start, end)]}
             self.parse_response(
                 self.session.post(url, params=params, proxies=self.proxies), json_data=False
